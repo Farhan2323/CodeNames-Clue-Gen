@@ -1,0 +1,217 @@
+/* App.css */
+
+/* --- MAIN CONTAINER --- */
+.app-container {
+  text-align: center;
+  /* Glassmorphism effect */
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* TYPOGRAPHY */
+h1 {
+  color: #0f172a; /* Slate 900 */
+  margin-top: 0;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  font-size: 2.2rem;
+  background: -webkit-linear-gradient(45deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #64748b; /* Slate 500 */
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+/* --- THE GRID --- */
+.board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+/* --- MODERN CARD STYLES --- */
+.card {
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  padding: 5px;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* CARD COLORS */
+.card.neutral {
+  background-color: #f8fafc;
+  border: 2px solid #e2e8f0;
+  color: #475569;
+}
+
+.card.blue {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  border: 2px solid #2563eb;
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.card.red {
+  background: linear-gradient(135deg, #f43f5e, #e11d48);
+  border: 2px solid #e11d48;
+  color: white;
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+}
+
+.card.assassin {
+  background: #1e293b;
+  border: 2px solid #0f172a;
+  color: #94a3b8;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.5);
+}
+
+/* INPUT FIELD */
+.card input {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 0.95rem;
+  outline: none;
+  font-family: inherit;
+  color: inherit;
+  pointer-events: auto; 
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card input::placeholder {
+  color: inherit;
+  opacity: 0.4;
+  font-weight: 500;
+}
+
+/* --- BUTTONS --- */
+.controls button {
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #10b981, #059669); /* Emerald Gradient */
+  color: white;
+  border: none;
+  border-radius: 50px; /* Pill shape */
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+  transition: all 0.2s;
+}
+
+.controls button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+  filter: brightness(1.1);
+}
+
+.controls button:disabled {
+  background: #cbd5e1;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- RESULT BOX --- */
+.clue-box {
+  background: white;
+  border-left: 6px solid #6366f1; /* Indigo accent */
+  padding: 30px; /* More internal breathing room */
+  border-radius: 12px;
+  text-align: left;
+  max-width: 500px;
+  
+  /* FIX #1: Add Gap between Button and Result */
+  margin: 40px auto 20px auto; 
+  
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.clue-box h2 {
+  margin-top: 0;
+  color: #1e293b;
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+}
+
+.targets-label {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.clue-box p {
+  margin-bottom: 5px;
+  color: #334155;
+}
+
+.clue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.clue-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s;
+}
+
+/* Make the first one pop (The Winner) */
+.clue-item:first-child {
+  background: linear-gradient(135deg, #e0e7ff, #eff6ff);
+  border-color: #c7d2fe;
+  font-weight: bold;
+}
+
+.clue-word {
+  color: #0f172a;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.clue-score {
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #6366f1;
+  font-weight: 600;
+  border: 1px solid #e0e7ff;
+}

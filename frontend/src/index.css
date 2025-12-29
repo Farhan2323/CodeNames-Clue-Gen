@@ -1,0 +1,25 @@
+:root {
+  /* Modern Font Stack */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* Subtle mesh gradient background */
+  background: radial-gradient(circle at top left, #eef2ff, #f3f4f6);
+  color: #1f293b;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Aligns to top with some padding */
+  padding-top: 40px;
+}
+
+#root {
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px;
+}
