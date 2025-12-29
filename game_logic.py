@@ -1,5 +1,5 @@
 import sys
-import gensim.downloader as api
+from gensim.models import KeyedVectors
 import nltk
 from nltk.stem import WordNetLemmatizer
 from wordfreq import zipf_frequency 
@@ -17,15 +17,21 @@ except LookupError:
     nltk.download('averaged_perceptron_tagger_eng')
 
 def load_model():
-    print("Loading model...")
+    print("Loading model from binary file...")
     
-    # 1. Tell Gensim where to look (the same folder we used in preload_data.py)
-    os.environ["GENSIM_DATA_DIR"] = os.path.join(os.getcwd(), "gensim-data")
+    # Path to the binary file created by preload_data.py
+    model_path = os.path.join(os.getcwd(), "glove_100d.model")
     
-    # 2. Load the model (It will find the cached file now instead of downloading)
-    model = api.load("glove-wiki-gigaword-100")
-    print("Model loaded successfully!")
-    return model
+    if os.path.exists(model_path):
+        # Load using mmap='r' (Memory Mapping) - This is INSTANT
+        model = KeyedVectors.load(model_path, mmap='r')
+        print("Model loaded successfully (Binary Mode)!")
+        return model
+    else:
+        # Fallback (Should not happen on Render if build works)
+        print("Binary file not found! Falling back to slow download...")
+        import gensim.downloader as api
+        return api.load("glove-wiki-gigaword-100")
 
 def is_valid(clue, board_words):
     lemmatizer = WordNetLemmatizer()
