@@ -4,6 +4,8 @@
 
 WEBSITE IS LIVE @ https://code-names-clue-gen.vercel.app/
 
+Note: Due to limited resourcing on the server side, start-up and generation on the first go may take some time. Please be patient and feel free to reach out about any improvements!! 
+
 
 A Full-Stack application that acts as a "Spymaster" for the board game Codenames. It uses Global Vectors for Word Representation (GloVe) to find semantic relationships between words and generate the optimal clue.
 ## 💡 The Problem
