@@ -66,6 +66,16 @@ def is_valid(clue, board_words):
 def get_best_clue(positive_words, negative_words, model):
     print(f"Thinking... Finding connection for {positive_words}")
 
+    positive_words = [w.lower() for w in positive_words]
+    negative_words = [w.lower() for w in negative_words]
+    # 2. VALIDATION: Check if words exist in the model
+    # If a user types a typo (e.g. "asdfg"), we must remove it or the model will crash
+    positive_words = [w for w in positive_words if w in model.key_to_index]
+    negative_words = [w for w in negative_words if w in model.key_to_index]
+
+    if not positive_words:
+        return []
+
     candidates = model.most_similar(positive=positive_words, topn=1000) # Look even deeper
     scored_candidates = []
 
