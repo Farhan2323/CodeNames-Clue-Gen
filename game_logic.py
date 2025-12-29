@@ -3,6 +3,7 @@ import gensim.downloader as api
 import nltk
 from nltk.stem import WordNetLemmatizer
 from wordfreq import zipf_frequency 
+import os
 
 # --- SETUP NLTK ---
 try:
@@ -17,9 +18,13 @@ except LookupError:
 
 def load_model():
     print("Loading model...")
-    # Ideally use 'glove-wiki-gigaword-300' for best results
-    model = api.load("glove-wiki-gigaword-300")
-    print("Model loaded!")
+    
+    # 1. Tell Gensim where to look (the same folder we used in preload_data.py)
+    os.environ["GENSIM_DATA_DIR"] = os.path.join(os.getcwd(), "gensim-data")
+    
+    # 2. Load the model (It will find the cached file now instead of downloading)
+    model = api.load("glove-wiki-gigaword-100")
+    print("Model loaded successfully!")
     return model
 
 def is_valid(clue, board_words):
