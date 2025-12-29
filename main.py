@@ -37,6 +37,12 @@ class GameRequest(BaseModel):
     positive_words: List[str]  # e.g., ["apple", "banana"]
     negative_words: List[str]  # e.g., ["computer"]
 
+
+
+@app.get("/health")
+async def health_check():
+    return {"status": "active"}
+
 # --- 4. DEFINE THE ENDPOINT  ---
 @app.post("/generate-clue")
 async def generate_clue(request: GameRequest):

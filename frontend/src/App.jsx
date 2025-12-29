@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
@@ -14,6 +15,13 @@ function App() {
 
   const [clueData, setClueData] = useState(null);
   const [loading, setLoading] = useState(false);
+  
+  useEffect(() => {
+    // Fire a quiet request to wake up Render
+    fetch('https://codenames-clue-generator.onrender.com/health')
+      .then(() => console.log("Server wake-up ping sent!"))
+      .catch(err => console.error("Wake-up ping failed:", err));
+  }, []); // The empty [] ensures this runs ONLY once when the page loads
 
   // 2. HELPER: Cycle card colors on click
   const toggleCardType = (index) => {
