@@ -58,7 +58,7 @@ function App() {
     }
 
     try {
-      const response = await fetch('https://codenames-clue-generator.onrender.com', {
+      const response = await fetch('https://codenames-clue-generator.onrender.com/generate-clue', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
