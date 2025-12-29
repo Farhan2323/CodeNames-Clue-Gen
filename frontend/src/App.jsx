@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useState, useEffect } from 'react'
 import './App.css'
 
@@ -15,7 +14,7 @@ function App() {
 
   const [clueData, setClueData] = useState(null);
   const [loading, setLoading] = useState(false);
-  
+
   useEffect(() => {
     // Fire a quiet request to wake up Render
     fetch('https://codenames-clue-generator.onrender.com/health')
