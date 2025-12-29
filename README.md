@@ -2,6 +2,9 @@
 ![Project Status](https://img.shields.io/badge/Status-Complete-success)
 ![Tech Stack](https://img.shields.io/badge/Stack-FastAPI%20|%20React%20|%20NLP-blue)
 
+WEBSITE IS LIVE @ https://code-names-clue-gen.vercel.app/
+
+
 A Full-Stack application that acts as a "Spymaster" for the board game Codenames. It uses Global Vectors for Word Representation (GloVe) to find semantic relationships between words and generate the optimal clue.
 ## 💡 The Problem
 In the game *Codenames*, a Spymaster must give a single-word clue that connects multiple words on the board while avoiding "instant loss" cards (The Assassin).
