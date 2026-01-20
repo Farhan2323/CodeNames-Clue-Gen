@@ -6,9 +6,7 @@ from contextlib import asynccontextmanager
 import game_logic
 
 # GLOBAL VARIABLE TO HOLD THE BRAIN
-# We store the model here so we don't have to reload it (130MB+) for every single request.
 models = {}
-
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -20,49 +18,49 @@ async def lifespan(app: FastAPI):
     models.clear()
     print("--- SHUTDOWN: Cleaning up... ---")
 
+# 1. Initialize App (Only once!)
 app = FastAPI(lifespan=lifespan)
 
-app = FastAPI(lifespan=lifespan)
+# 2. Define Allowed Origins (The Fix)
+origins = [
+    "http://localhost:5173",             # Local Development
+    "http://127.0.0.1:5173",             # Local Development (Alternative)
+    "https://code-names-clue-gen.vercel.app" # <--- YOUR VERCEL URL
+]
 
-# --- NEW: ALLOW FRONTEND CONNECTION ---
+# 3. Add Middleware with Specific Origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows ALL origins (for development only)
+    allow_origins=origins,       # Use the list above, not ["*"]
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods (POST, GET, etc.)
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 class GameRequest(BaseModel):
-    positive_words: List[str]  # e.g., ["apple", "banana"]
-    negative_words: List[str]  # e.g., ["computer"]
-
-
+    positive_words: List[str]
+    negative_words: List[str]
 
 @app.get("/health")
 async def health_check():
     return {"status": "active"}
 
-# --- 4. DEFINE THE ENDPOINT  ---
 @app.post("/generate-clue")
 async def generate_clue(request: GameRequest):
     if "glove" not in models:
         raise HTTPException(status_code=500, detail="Model not loaded yet.")
 
-    # Get the list of top 5 results
     top_candidates = game_logic.get_best_clue(
         request.positive_words, 
         request.negative_words, 
         models["glove"]
     )
 
-    # Return the entire list
     return {
-        "candidates": top_candidates, # <--- The Frontend will loop through this
+        "candidates": top_candidates,
         "input_positive": request.positive_words
     }
 
-# --- 5. HEALTH CHECK ---
 @app.get("/")
 async def root():
     return {"message": "Codenames AI Server is Running!"}
