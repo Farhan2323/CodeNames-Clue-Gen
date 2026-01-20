@@ -58,6 +58,7 @@ const WordListSection = ({ label, color, list, setList }) => {
 };
 
 function App() {
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';  
   const [activeTab, setActiveTab] = useState('board');
   const [clueData, setClueData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -75,8 +76,9 @@ function App() {
   const [listAvoid, setListAvoid] = useState([""]);
 
   useEffect(() => {
-    fetch('https://codenames-clue-generator.onrender.com/health').catch(() => {});
-  }, []);
+  // Use the variable instead of the hardcoded link
+  fetch(`${API_URL}/health`).catch(() => {});
+}, []);
 
   const toggleCardType = (index) => {
     const types = ["neutral", "blue", "red", "assassin"];
@@ -111,7 +113,7 @@ function App() {
     }
 
     try {
-      const response = await fetch('https://codenames-clue-generator.onrender.com/generate-clue', {
+      const response = await fetch(`${API_URL}/generate-clue`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ positive_words: positive, negative_words: negative })
