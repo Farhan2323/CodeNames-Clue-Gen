@@ -1,6 +1,6 @@
 # Contributing to Codenames AI
 
-Thank you for your interest in contributing! We welcome bug fixes, UI improvements, and new algorithm ideas.
+Thank you for your interest in contributing! Bug fixes, UI improvements, and new algorithm ideas ARE WELCOME! 
 
 ## 🛠️ Local Development Setup
 
