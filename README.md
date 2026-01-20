@@ -1,4 +1,4 @@
-# Codenames AI Spymaster 🕵️‍♂️ OPEN SOURCE 
+# Codenames AI Spymaster 🕵️‍♂️ Officially OPEN SOURCE ‼️
 ![Project Status](https://img.shields.io/badge/Status-Complete-success)
 ![Tech Stack](https://img.shields.io/badge/Stack-FastAPI%20|%20React%20|%20NLP-blue)
 
@@ -83,15 +83,17 @@ npm run dev
 ```
 The application will run at http://localhost:5173.
 
-🤝 Contributing
-Contributions are welcome! Whether it's reporting a bug, suggesting a feature, or writing code.
+## 🤝 Contributing
+Contributions are welcome! Whether you are a pro or just getting started, here is how you can help:
 
-Please read CONTRIBUTING.md for details on our code of conduct and the process for submitting pull requests.
+* **Report a Bug:** Open an issue if you find a glitch.
+* **Suggest a Feature:** Have an idea to make the AI smarter? Let us know.
+* **Write Code:** Check the **[Issues](../../issues)** tab for the `good first issue` label if you want to pick up a task!
 
-Check the Issues tab for "Good First Issue" labels if you want to help out!
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-📜 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 📜 License
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ----
 👨‍💻 Author
