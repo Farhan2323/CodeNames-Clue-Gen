@@ -17,19 +17,19 @@ Humans struggle with this because:
 ## 🛠️ Solution Architecture
 This project solves the problem using **Semantic Vector Space Modeling**.
 
-### The "Brain" (Backend)
+### Backend
 * **Engine:** Python & NumPy
 * **API:** FastAPI (chosen for async performance and automatic Swagger documentation)
 * **Model:** GloVe (Global Vectors for Word Representation) - 300 Dimensions, 6B tokens.
 
-### The "Face" (Frontend)
+### Frontend
 * **Framework:** React (Vite)
 * **Styling:** CSS Modules with Glassmorphism design principles.
 * **State Management:** React Hooks (`useState`, `useEffect`) for real-time board manipulation.
 
 ---
 
-## 🧠 Technical Implementation (The Algorithm)
+## 🧠 Technical Implementation (Algorithm)
 
 The core logic revolves around finding a **Centroid** in a 300-dimensional hypercube.
 
